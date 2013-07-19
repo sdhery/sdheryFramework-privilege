@@ -20,7 +20,7 @@ class AdminAuthorizingRealm extends AuthorizingRealm {
     private Logger log = Logger.getLogger(getClass());
 
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
+        log.info("doGetAuthorizationInfo....");
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
