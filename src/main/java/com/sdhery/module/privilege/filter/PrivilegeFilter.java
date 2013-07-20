@@ -22,12 +22,10 @@ public class PrivilegeFilter extends HttpServlet implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
         this.filterConfig = filterConfig;
-        if(delegate==null){
-            delegate = SpringContextHolder.getBean(getTargetBeanName(),Filter.class);
-        }
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+
         //非加载URL
         if (!FilterUtil.doInclude(request, response, filterConfig)) {
             filterChain.doFilter(request, response);
@@ -39,6 +37,10 @@ public class PrivilegeFilter extends HttpServlet implements Filter {
             filterChain.doFilter(request, response);
             return;
         }
+        if(delegate==null){
+            delegate = SpringContextHolder.getBean(getTargetBeanName(),Filter.class);
+        }
+
         if(delegate!=null){
             delegate.doFilter(request,response,filterChain);
         }else {
