@@ -16,7 +16,6 @@ import java.util.Enumeration;
  * To change this template use File | Settings | File Templates.
  */
 public class PrivilegeFilter extends HttpServlet implements Filter {
-    private String targetBeanName;
     private Filter delegate;
 
     protected FilterConfig filterConfig;
