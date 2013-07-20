@@ -24,8 +24,6 @@
             <value>
                 /admin/login.jsp = authc
                 /admin/main.jsp = authc
-                /admin/js/** = anon
-                /admin/style/** = anon
             </value>
         </property>
     </bean>
