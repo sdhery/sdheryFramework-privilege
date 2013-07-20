@@ -22,8 +22,7 @@
         <property name="unauthorizedUrl" value="/unauthorized.jsp" />
         <property name="filterChainDefinitions" >
             <value>
-                /admin/login.jsp = authc
-                /admin/main.jsp = authc
+                /admin/** = authc
             </value>
         </property>
     </bean>
