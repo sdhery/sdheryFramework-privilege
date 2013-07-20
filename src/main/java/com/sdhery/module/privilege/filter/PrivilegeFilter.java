@@ -49,7 +49,7 @@ public class PrivilegeFilter extends HttpServlet implements Filter {
     }
 
     public String getTargetBeanName() {
-        return getInitParameter("targetBeanName");
+        return getInitParameter("targetBean");
     }
 
     public String getInitParameter(String name) {
