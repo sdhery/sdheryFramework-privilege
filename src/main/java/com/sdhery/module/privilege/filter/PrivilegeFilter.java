@@ -42,6 +42,7 @@ public class PrivilegeFilter extends HttpServlet implements Filter {
         }
 
         if(delegate!=null){
+            delegate.init(filterConfig);
             delegate.doFilter(request,response,filterChain);
         }else {
             filterChain.doFilter(request, response);

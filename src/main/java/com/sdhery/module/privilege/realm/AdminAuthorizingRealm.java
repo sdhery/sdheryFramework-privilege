@@ -16,14 +16,16 @@ import org.apache.shiro.subject.PrincipalCollection;
  * Time: 下午3:12
  * 后台安全认证实现类
  */
-class AdminAuthorizingRealm extends AuthorizingRealm {
+public class AdminAuthorizingRealm extends AuthorizingRealm {
     private Logger log = Logger.getLogger(getClass());
 
+    @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         log.info("doGetAuthorizationInfo....");
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
+    @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         AdminUserToken token = (AdminUserToken) authenticationToken;
         log.info(token.getUsername());
