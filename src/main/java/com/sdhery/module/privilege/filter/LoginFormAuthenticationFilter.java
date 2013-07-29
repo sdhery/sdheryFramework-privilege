@@ -1,7 +1,12 @@
 package com.sdhery.module.privilege.filter;
 
+import com.sdhery.module.privilege.token.AdminUserToken;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.apache.shiro.web.util.WebUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -14,9 +19,20 @@ import javax.servlet.ServletResponse;
  * To change this template use File | Settings | File Templates.
  */
 public class LoginFormAuthenticationFilter extends FormAuthenticationFilter {
+    private static final Logger log = LoggerFactory.getLogger(FormAuthenticationFilter.class);
+    public static final String LOGIN_ID = "loginId";
 
-    @Override
+
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
-       return null;
+        log.info("i going LoginFormAuthenticationFilter createToken");
+        String loginId = WebUtils.getCleanParam(request, LOGIN_ID);
+        String password = getPassword(request);
+        return new AdminUserToken(loginId,password);
+    }
+
+
+    protected boolean onLoginFailure(AuthenticationToken token,AuthenticationException e, ServletRequest request,ServletResponse response) {
+        log.info("i going LoginFormAuthenticationFilter onLoginFailure");
+        return true;
     }
 }

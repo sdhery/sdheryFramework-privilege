@@ -11,7 +11,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
  */
 public class AdminUserToken extends UsernamePasswordToken {
 
-    public AdminUserToken(String username,String password) {
-        super(username, password);
+    public AdminUserToken(String loginId,String password) {
+        super(loginId, password);
     }
 }
